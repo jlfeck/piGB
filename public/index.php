@@ -22,4 +22,8 @@ $twig = new Twig_Environment($loader, array(
     'cache' => CACHETEMPLATEDIR,
 ));
 
-echo $twig->render('index.html', array('name' => 'Vini'));
+
+$arrayName = array('name' => 'joao', 
+					'idade' => '21');
+
+echo $twig->render('index.html', $arrayName);
