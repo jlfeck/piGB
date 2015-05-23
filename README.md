@@ -6,7 +6,6 @@ Grau B
 
 cp -f config.php.install config.php
 
-2 - Passo
+2 - Instalação de dependências
 
-Instalação de dependências
 /c/xampp/php/php composer.phar install
