@@ -1,4 +1,4 @@
-!vendor/*
-/vendor/
+vendor/
 composer.lock
 config/config.php
+public/templates/cache/
