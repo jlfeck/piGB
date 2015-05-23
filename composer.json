@@ -1,0 +1,14 @@
+{
+  	"require": {
+        "twig/twig": "*",
+        "twig/extensions": "*"
+	},
+	"autoload": {
+        "classmap": [
+            "app/model",
+            "app/controller",
+            "app/view",
+            "config"
+        ]
+    }
+}
