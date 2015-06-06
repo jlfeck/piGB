@@ -1,4 +1,7 @@
 <?php
+
+// include '../config/config.php';
+
 /**
  * Define some constants
  */
@@ -18,12 +21,24 @@ if (file_exists(VENDORDIR . "autoload.php")) {
 }
 
 $loader = new Twig_Loader_Filesystem(TEMPLATEDIR);
-$twig = new Twig_Environment($loader, array(
-    'cache' => CACHETEMPLATEDIR,
-));
+$twig = new Twig_Environment($loader);
+
+function url(){
+	return sprintf(
+	"%s://%s%s",
+	isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http',
+			$_SERVER['SERVER_NAME'],
+			$_SERVER['REQUEST_URI']
+	);
+}
 
 
-$arrayName = array('name' => 'joao', 
-					'idade' => '21');
+$teste = new Connection();
+
+var_dump($teste);
+
+$arrayName = array('baseUrl' => url(),
+					'name' => 'joao', 
+					'idade' => '24');
 
 echo $twig->render('index.html', $arrayName);
