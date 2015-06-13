@@ -9,8 +9,14 @@
     <!-- Bootstrap core CSS -->
     <link href="{{ baseUrl }}/assets/css/bootstrap.min.css" rel="stylesheet">
 
+    <link href="{{ baseUrl }}/assets/css/style.css" rel="stylesheet">
+
+
     <!-- Custom styles for this template -->
-    <!-- <link href="{{ baseUrl }}/assets/css/style.min.css" rel="stylesheet"> -->
+    <!-- <link href="{{ baseUrl }}/vendor/metisMenu/dist/metisMenu.min.css" rel="stylesheet"> -->
+    <!-- <link href="{{ baseUrl }}/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet"> -->
+
+    <!-- <link href="{{ baseUrl }}/assets/css/datepicker3.css" rel="stylesheet"> -->
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -23,8 +29,6 @@
     <![endif]-->
   </head>
   <body>
-  		<h1>Teste {{ name }}</h1>
-		<p>{{ idade }}</p>
     {% block content %}
     {% endblock %}
       <!-- Bootstrap core JavaScript
@@ -33,9 +37,17 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
       <script src="{{ baseUrl }}/assets/js/bootstrap.min.js"></script>
       
-      <!-- Load admin implement -->
-      <!-- <script src="{{ baseUrl }}/assets/js/main.js"></script> -->
+      <!-- Load admin implement 
       
+      <script src="{{ baseUrl }}/vendor/metisMenu/dist/metisMenu.min.js"></script>
+      <script src="{{ baseUrl }}/vendor/bootstrap/js/tooltip.js"></script>
+      <script src="{{ baseUrl }}/assets/js/jquery-scrolltofixed-min.js"></script>
+      <script src="{{ baseUrl }}/assets/js/bootbox.min.js"></script>
+      <script src="{{ baseUrl }}/assets/js/bootstrap-datepicker.js"></script>
+      <script src="{{ baseUrl }}/assets/js/jquery.mask.min.js"></script>
+      <script src="{{ baseUrl }}/assets/js/main.js"></script>
+      
+      -->
       <!-- <script src="../../assets/js/docs.min.js"></script> -->
       <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
   </body>

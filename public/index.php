@@ -32,13 +32,13 @@ function url(){
 	);
 }
 
+$user = new User();
 
-$teste = new Connection();
+var_dump($user->hasUser('admin'));
 
-var_dump($teste);
 
 $arrayName = array('baseUrl' => url(),
 					'name' => 'joao', 
 					'idade' => '24');
 
-echo $twig->render('index.html', $arrayName);
+echo $twig->render('login.html', $arrayName);

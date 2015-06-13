@@ -1,0 +1,23 @@
+<div class="col-sm-3 col-md-2 sidebar">
+  <ul class="nav nav-sidebar" id="side-menu">
+    <li {{ ordered_active ? 'class="active"' : '' }}><a href="{{ baseUrl }}/admin/orders/">Pedidos</a></li>
+  	<li {{ customer_active ? 'class="active"' : '' }}><a href="{{ baseUrl }}/admin/customers/">Clientes</a></li>
+  	<li {{ collaborator_active ? 'class="active"' : '' }}><a href="{{ baseUrl }}/admin/collaborators/">Colaboradores</a></li>
+    <li {{ provider_active ? 'class="active"' : '' }}><a href="{{ baseUrl }}/admin/providers/">Fornecedores</a></li>
+    <li {{ profile_active or user_active ? 'class="active"' : '' }}>
+        <a href="#">Usuários<span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level collapse">
+          <li {{ profile_active ? 'class="active"' : '' }}><a href="{{ baseUrl }}/admin/users/profiles/">Perfil de Usuário</a></li>
+          <li {{ user_active ? 'class="active"' : '' }}><a href="{{ baseUrl }}/admin/users/users/">Usuários</a></li>
+        </ul>
+    </li>
+    <li {{ product_active or category_active ? 'class="active"' : '' }}>
+        <a href="#">Produtos<span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level collapse">
+            <li {{ category_active ? 'class="active"' : '' }}><a href="{{ baseUrl }}/admin/products/categories/">Categoria</a></li>
+            <li {{ product_active ? 'class="active"' : '' }}><a href="#">Produtos</a></li>
+        </ul>
+    </li>
+
+  </ul>
+</div>
