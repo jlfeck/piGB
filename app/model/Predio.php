@@ -29,11 +29,11 @@
 	
 	// verifica se o Predio já existe
     public function hasPredio($txIdentificacao) {
-        $sql = 'SELECT * FROM predio WHERE tx_identificacao = ?';
+        $sql = 'SELECT * FROM Predio WHERE txIdentificacao = ?';
         try {
-            $has_Predio = Connection::prepare($sql);
-            $has_Predio->bindParam(1, $txIdentificacao);
-            $has_Predio->execute();
+            $hasPredio = Connection::prepare($sql);
+            $hasPredio->bindParam(1, $txIdentificacao);
+            $hasPredio->execute();
             $result = !$hasPredio->fetchColumn() ? false : true;
             
             return $result;
@@ -46,26 +46,26 @@
     }
     // insere um Predio no banco
     public function insertPredio() {
-        $sql = 'INSERT INTO predio (tx_identificacao, campus_id) ';
-        $sql.= 'VALUES (:tx_identificacao,:campus_id)';
+        $sql = 'INSERT INTO Predio (txIdentificacao, campusId) ';
+        $sql.= 'VALUES (:txIdentificacao,:campusId)';
         try {
             if ($this->hasPredio($this->getTxIdentificacao())) {
                 
                 $data = array(
-                    'msg' => 'Prédio já cadastrado',
+                    'msg' => 'Predio já cadastrado',
                     'route' => 'user_new.php'
                 );
                 
                 return $data;
             } else {                
                 
-                $insert_Predio = Connection::prepare($sql);
-                $insert_Predio->bindValue(':tx_identificacao', $this->getTxIdentificacao(), PDO::PARAM_STR);
-                $insert_Predio->bindValue(':campus_id', $this->getCampusId(), PDO::PARAM_STR);
-                $insert_Predio->execute();
+                $insert_Disciplina = Connection::prepare($sql);
+                $insert_Disciplina->bindValue(':txIdentificacao', $this->getTxIdentificacao(), PDO::PARAM_STR);
+                $insert_Disciplina->bindValue(':campusId', $this->getCampusId(), PDO::PARAM_STR);
+                $insert_Disciplina->execute();
                 
                 $data = array(
-                    'msg' => 'Prédio inserido com sucesso',
+                    'msg' => 'Predio inserido com sucesso',
                     'route' => 'login.php'
                 );
                 
@@ -80,7 +80,7 @@
     }
     // retorna um objeto Predio
     public function loadPredio($id) {
-        $sql = 'SELECT * FROM predio WHERE id = ?';
+        $sql = 'SELECT * FROM Predio WHERE id = ?';
         try {
             $load_Predio = Connection::prepare($sql);
             $load_Predio->bindParam(1, $id);
@@ -97,22 +97,22 @@
     }
     // atualiza um Predio no banco
     public function updatePredio($id) {
-        $sql = 'UPDATE  predio SET  tx_identificacao = :tx_identificacao, campus_id = :campus_id WHERE  id = :id';
+        $sql = 'UPDATE  Predio SET  txNome = :txNome, nrCargaHoraria = :nrCargaHoraria WHERE  id = :id';
         try {
                 $update_Predio = Connection::prepare($sql);
-                $update_Predio->bindValue(':tx_identificacao', $this->getTxIdentificacao(), PDO::PARAM_STR);
-                $update_Predio->bindValue(':campus_id', $this->getCampusId(), PDO::PARAM_STR);
+                $update_Predio->bindValue(':txIdentificacao', $this->getTxIdentificacao(), PDO::PARAM_STR);
+                $update_Predio->bindValue(':campusId', $this->getCampusId(), PDO::PARAM_STR);
                 $update_Predio->bindParam(':id', $id);
                 $update_Predio->execute();
                 $data = array(
-                    'msg' => 'Prédio atualizado com sucesso',
+                    'msg' => 'Predio atualizado com sucesso',
                     'route' => 'user_edit.php?id=',
                     'error' => false
                 );
                 return $data;
         } catch (Exception $error_update) {
             $data = array(
-                'msg' => 'Erro ao atualizar pré '.$error_update->getMessage(),
+                'msg' => 'Erro ao atualizar disciplina '.$error_update->getMessage(),
                 'error' => true
             );
             return $data;
@@ -120,7 +120,7 @@
     }
     // deleta um Predio do banco
     public function deletePredio($id) {
-        $sql = 'DELETE FROM predio WHERE id = :id';
+        $sql = 'DELETE FROM Predio WHERE id = :id';
         try {
             $delete_Predio = Connection::prepare($sql);
             $delete_Predio->bindValue(":id", $id);
