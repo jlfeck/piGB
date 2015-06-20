@@ -6,29 +6,36 @@ class Predio extends Connection
 	private $txIdentificacao = "";
 	private $campusId = 0;
 
-
-	public function setId($id){
+	public function setId($id)
+    {
 		$this->id = $id;
 	}
-	public function getId(){
+	public function getId()
+    {
 		return $this->id;
 	}
 
-    public function setTxIdentificacao($txIdentificacao){
+    public function setTxIdentificacao($txIdentificacao)
+    {
         $this->txIdentificacao = $txIdentificacao;
     }
-	public function getTxIdentificacao(){
+	public function getTxIdentificacao()
+    {
 		return $this->txIdentificacao;
 	}
 
-    public function setCampusId($campusId){
+    public function setCampusId($campusId)
+    {
         $this->campusId = $campusId;
-	public function getCampusId(){
+    }
+	public function getCampusId()
+    {
 		return $this->campusId;
 	}
 
     // verifica se o Predio já existe
-    public function hasPredio($txIdentificacao) {
+    public function hasPredio($txIdentificacao)
+    {
         $sql = 'SELECT * FROM Predio WHERE txIdentificacao = ?';
         try {
             $hasPredio = Connection::prepare($sql);
@@ -45,7 +52,8 @@ class Predio extends Connection
         }
     }
     // insere um Predio no banco
-    public function insertPredio() {
+    public function insertPredio()
+    {
         $sql = 'INSERT INTO Predio (txIdentificacao, campusId) ';
         $sql.= 'VALUES (:txIdentificacao,:campusId)';
         try {
@@ -79,7 +87,8 @@ class Predio extends Connection
         }
     }
     // retorna um objeto Predio
-    public function loadPredio($id) {
+    public function loadPredio($id)
+    {
         $sql = 'SELECT * FROM Predio WHERE id = ?';
         try {
             $load_Predio = Connection::prepare($sql);
@@ -96,7 +105,8 @@ class Predio extends Connection
         }
     }
     // atualiza um Predio no banco
-    public function updatePredio($id) {
+    public function updatePredio($id)
+    {
         $sql = 'UPDATE  Predio SET  txNome = :txNome, nrCargaHoraria = :nrCargaHoraria WHERE  id = :id';
         try {
                 $update_Predio = Connection::prepare($sql);
@@ -119,7 +129,8 @@ class Predio extends Connection
         }
     }
     // deleta um Predio do banco
-    public function deletePredio($id) {
+    public function deletePredio($id)
+    {
         $sql = 'DELETE FROM Predio WHERE id = :id';
         try {
             $delete_Predio = Connection::prepare($sql);

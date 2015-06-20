@@ -5,22 +5,27 @@ class Campus extends Connection
     private $id = 0;
     private $txNome = "";
 
-    public function setId($id){
-    	$this->id = $id;
+    public function setId($id)
+    {
+        $this->id = $id;
     }
-    public function getId(){
-    	return $this->id;
+    public function getId()
+    {
+        return $this->id;
     }
     
-    public function setTxNome($txNome){
+    public function setTxNome($txNome)
+    {
         $this->txNome = $txNome;
     }
-    public function getTxNome(){
+    public function getTxNome()
+    {
         return $this->txNome;
     }
     
     // verifica se o campus já existe
-    public function hasCampus($id) {
+    public function hasCampus($id)
+    {
         $sql = 'SELECT * FROM campus WHERE id = ?';
         try {
             $hasCampus = Connection::prepare($sql);
@@ -37,7 +42,8 @@ class Campus extends Connection
         }
     }
     // insere um campus no banco
-    public function insertCampus() {
+    public function insertCampus()
+    {
         $sql = 'INSERT INTO campus (tx_nome)';
         $sql.= 'VALUES (:tx_nome)';
         try {
@@ -70,7 +76,8 @@ class Campus extends Connection
         }
     }
     // retorna um objeto campus
-    public function loadCampus($id) {
+    public function loadCampus($id)
+    {
         $sql = 'SELECT * FROM campus WHERE id = ?';
         try {
             $load_campus = Connection::prepare($sql);
@@ -87,7 +94,8 @@ class Campus extends Connection
         }
     }
     // atualiza um campus no banco
-    public function updateCampus($id) {
+    public function updateCampus($id)
+    {
         $sql = 'UPDATE campus SET tx_nome = :tx_nome WHERE id = :id';
         try {
                 $update_campus = Connection::prepare($sql);
@@ -109,7 +117,8 @@ class Campus extends Connection
         }
     }
     // deleta um usuário do banco
-    public function deleteCampus($id) {
+    public function deleteCampus($id)
+    {
         $sql = 'DELETE FROM campus WHERE id = :id';
         try {
             $delete_campus = Connection::prepare($sql);

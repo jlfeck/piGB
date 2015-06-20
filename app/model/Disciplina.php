@@ -1,35 +1,41 @@
 <?php
 
-
 class Disciplina extends Connection
 {
 	private $id = 0;
 	private $txNome = "";
 	private $nrCargaHoraria = "";
 
-	public function setId($id){
+	public function setId($id)
+    {
 		$this->id = $id;
 	}
-    public function getId(){
+    public function getId()
+    {
         return $this->id;
     }
 
-    public function setTxNome($txNome){
+    public function setTxNome($txNome)
+    {
         $this->txNome = $txNome;
     }
-    public function getTxNome(){
+    public function getTxNome()
+    {
         return $this->txNome;
     }
 
-    public function setNrCargaHoraria($nrCargaHoraria){
+    public function setNrCargaHoraria($nrCargaHoraria)
+    {
         $this->nrCargaHoraria = $nrCargaHoraria;
     }
-    public function getNrCargaHoraria(){
+    public function getNrCargaHoraria()
+    {
         return $this->nrCargaHoraria;
     }
 
     // verifica se o Disciplina já existe
-    public function hasDisciplina($txNome) {
+    public function hasDisciplina($txNome)
+    {
         $sql = 'SELECT * FROM Disciplina WHERE txNome = ?';
         try {
             $hasDisciplina = Connection::prepare($sql);
@@ -46,7 +52,8 @@ class Disciplina extends Connection
         }
     }
     // insere um Disciplina no banco
-    public function insertDisciplina() {
+    public function insertDisciplina()
+    {
         $sql = 'INSERT INTO Disciplina (txNome, nrCargaHoraria) ';
         $sql.= 'VALUES (:txNome,:nrCargaHoraria)';
         try {
@@ -80,7 +87,8 @@ class Disciplina extends Connection
         }
     }
     // retorna um objeto Disciplina
-    public function loadDisciplina($id) {
+    public function loadDisciplina($id)
+    {
         $sql = 'SELECT * FROM Disciplina WHERE id = ?';
         try {
             $load_Disciplina = Connection::prepare($sql);
@@ -97,7 +105,8 @@ class Disciplina extends Connection
         }
     }
     // atualiza um Disciplina no banco
-    public function updateDisciplina($id) {
+    public function updateDisciplina($id)
+    {
         $sql = 'UPDATE  Disciplina SET  txNome = :txNome, nrCargaHoraria = :nrCargaHoraria WHERE  id = :id';
         try {
                 $update_Curso = Connection::prepare($sql);
@@ -120,7 +129,8 @@ class Disciplina extends Connection
         }
     }
     // deleta um Disciplina do banco
-    public function deleteDisciplina($id) {
+    public function deleteDisciplina($id)
+    {
         $sql = 'DELETE FROM Disciplina WHERE id = :id';
         try {
             $delete_Disciplina = Connection::prepare($sql);

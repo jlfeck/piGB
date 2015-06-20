@@ -1,40 +1,41 @@
 <?php
 	
-	class Curso extends Connection{
-		private $id = 0;
-		private $txDescricao = "";
-		private $campusId = ""; 
+class Curso extends Connection
+{
+	private $id = 0;
+	private $txDescricao = "";
+	private $campusId = ""; 
 
-		//SETS
-		public function setId ($id)
-		{
-			$this->id = $id;
-		}
-		public function setTxDescricao ($txDescricao)
-		{
-			$this->txDescricao = $txLogin;
-		}
-		public function setCampusId ($campusId)
-		{
-			$this->campusId = $campusId;
-		}
+	public function setId($id)
+	{
+		$this->id = $id;
+	}
+	public function getId()
+	{
+		return $this->id;
+	}
 
+    public function setTxDescricao($txDescricao)
+    {
+        $this->txDescricao = $txLogin;
+    }
+	public function getTxDescricao()
+	{
+		return $this->txDescricao;	
+	}
 
-		//GETS
-		public function getId ()
-		{
-			return $this->id;
-		}
-		public function getTxDescricao ()
-		{
-			return $this->txDescricao;	
-		}
-		public function getCampusId ()
-		{
-			return $this->campusId;			
-		}
+    public function setCampusId($campusId)
+    {
+        $this->campusId = $campusId;
+    }
+	public function getCampusId()
+	{
+		return $this->campusId;			
+	}
+
     // verifica se o Curso já existe
-    public function hasCurso($txDescricao) {
+    public function hasCurso($txDescricao)
+    {
         $sql = 'SELECT * FROM Curso WHERE txDescricao = ?';
         try {
             $hasCurso = Connection::prepare($sql);
@@ -51,7 +52,8 @@
         }
     }
     // insere um curso no banco
-    public function insertCurso() {
+    public function insertCurso()
+    {
         $sql = 'INSERT INTO Curso (txDescricao, campusId) ';
         $sql.= 'VALUES (:txDescricao,:campusId)';
         try {
@@ -85,7 +87,8 @@
         }
     }
     // retorna um objeto user
-    public function loadCurso($id) {
+    public function loadCurso($id)
+    {
         $sql = 'SELECT * FROM Curso WHERE id = ?';
         try {
             $load_Curso = Connection::prepare($sql);
@@ -102,7 +105,8 @@
         }
     }
     // atualiza um usuário no banco
-    public function updateCurso($id) {
+    public function updateCurso($id)
+    {
         $sql = 'UPDATE  Curso SET  txDescricao = :txDescricao, campusId = :campusId WHERE  id = :id';
         try {
                 $update_Curso = Connection::prepare($sql);
@@ -125,7 +129,8 @@
         }
     }
     // deleta um usuário do banco
-    public function deleteCurso($id) {
+    public function deleteCurso($id)
+    {
         $sql = 'DELETE FROM Curso WHERE id = :id';
         try {
             $delete_Curso = Connection::prepare($sql);
