@@ -1,39 +1,34 @@
 <?php
 
-	class Disciplina extends Connection{
-		private $id = 0;
-		private $txNome = "";
-		private $nrCargaHoraria = "";
 
-		//SETS
-		public function setId($id)
-		{
-			$this->id = $id;
-		}
-		public function setTxNome($txNome)
-		{
-			$this->txNome = $txNome;
-		}
-	    public function setNrCargaHoraria($nrCargaHoraria)
-	    {
-			$this->nrCargaHoraria = $nrCargaHoraria;
-		}
+class Disciplina extends Connection
+{
+	private $id = 0;
+	private $txNome = "";
+	private $nrCargaHoraria = "";
 
-		//GETS
-		public function getId()
-		{
-			return $this->id;
-		}
-		public function getTxNome()
-		{
-			return $this->txNome;
-		}
-		public function getNrCargaHoraria()
-		{
-			return $this->nrCargaHoraria;
-		}
+	public function setId($id){
+		$this->id = $id;
+	}
+    public function getId(){
+        return $this->id;
+    }
 
-	// verifica se o Disciplina já existe
+    public function setTxNome($txNome){
+        $this->txNome = $txNome;
+    }
+    public function getTxNome(){
+        return $this->txNome;
+    }
+
+    public function setNrCargaHoraria($nrCargaHoraria){
+        $this->nrCargaHoraria = $nrCargaHoraria;
+    }
+    public function getNrCargaHoraria(){
+        return $this->nrCargaHoraria;
+    }
+
+    // verifica se o Disciplina já existe
     public function hasDisciplina($txNome) {
         $sql = 'SELECT * FROM Disciplina WHERE txNome = ?';
         try {
@@ -145,5 +140,4 @@
             return $data;
         }
     }
-    
 }
