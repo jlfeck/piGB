@@ -32,7 +32,9 @@ function url(){
 	);
 }
 
-$Campus = new Campus();
+// (new Campus())->hasCampus(1);
+
+// var_dump(Campus::hasCampus(1));
 
 // var_dump($Campus->updateCampus(2));
 
@@ -42,12 +44,10 @@ $Campus = new Campus();
 
 // $return = $Campus->updateCampus(2);
 
-$return = $Campus->deleteCampus(2);
-
-var_dump($return);
+// $return = $Campus->deleteCampus(2);
 
 $arrayName = array('baseUrl' => url(),
 					'name' => 'joao', 
 					'idade' => '24');
 
-echo $twig->render('login.html', $arrayName);
+echo $twig->render('panel.html', $arrayName);
