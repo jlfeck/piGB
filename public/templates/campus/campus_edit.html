@@ -1,8 +1,10 @@
 <form method="POST" action="{{ baseUrl() }}/campus/edit/{{ service.id }}" class="form-horizontal" role="form">
-	  <input type="hidden" name="_METHOD" value="PUT"/>
-	  <input type="hidden" name="id" value="{{ campus.id }}" />
-	  <div class="form-group">
-	    <label for="" class="col-sm-2 control-label">Nome</label>
-	    <div class="col-sm-4">
-	      <input type="text" class="form-control" name="txNome" placeholder="Nome" value="{{ txNome }}">
-	    </div>
+	<input type="hidden" name="_METHOD" value="PUT"/>
+	<input type="hidden" name="id" value="{{ campus.id }}" />
+	<div class="form-group">
+		<label for="" class="col-sm-2 control-label">Nome</label>
+		<div class="col-sm-4">
+		  <input type="text" class="form-control" name="txNome" placeholder="Nome" value="{{ txNome }}">
+		</div>
+	</div>
+</form>
