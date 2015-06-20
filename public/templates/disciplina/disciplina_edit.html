@@ -1,0 +1,23 @@
+	<form method="POST" action="{{ baseUrl() }}/disciplina/edit/{{ disciplina.id }}" class="form-horizontal" role="form">
+	  <input type="hidden" name="_METHOD" value="PUT"/>
+	  <input type="hidden" name="id" value="{{ disciplina.id }}" />
+	  <div class="form-group">
+	    <label for="" class="col-sm-2 control-label">Nome</label>
+	    <div class="col-sm-4">
+	      <input type="text" class="form-control" name="txNome" placeholder="Nome" value="{{ disciplina.txNome }}">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	  	<label for="" class="col-sm-2 control-label">Carga horária</label>
+	    <div class="col-sm-4">
+	      <input type="text" class="form-control" name="nrCargaHoraria" placeholder="Carga horária" value="{{ disciplina.nrCargaHoraria }}">
+	    </div>
+	  </div>
+	  
+	  <div class="form-group">
+	    <div class="col-sm-offset-2 col-sm-5">
+	      <button type="submit" class="btn btn-default">Salvar</button>
+	    </div>
+	  </div>
+
+	</form>
