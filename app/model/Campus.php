@@ -1,27 +1,27 @@
 <?php
 
-	class Campus extends Connection{
-		private $id = 0;
-		private $txNome = "";
+class Campus extends Connection
+{
+    private $id = 0;
+    private $txNome = "";
 
-		//SETS
-		public function setId($id){
-			$this->id = $id;
-		}
-		public function setTxNome($txNome){
-			$this->txNome = $txNome;
-		}
-
-		//GETS
-		public function getTxNome(){
-			return $this->txNome;
-		}
-		public function getId(){
-			return $this->id;
-		}
+    public function setId($id){
+    	$this->id = $id;
+    }
+    public function getId(){
+    	return $this->id;
+    }
+    
+    public function setTxNome($txNome){
+        $this->txNome = $txNome;
+    }
+    public function getTxNome(){
+        return $this->txNome;
+    }
+    
     // verifica se o campus já existe
     public function hasCampus($id) {
-        $sql = 'SELECT * FROM Campus WHERE id = ?';
+        $sql = 'SELECT * FROM campus WHERE id = ?';
         try {
             $hasCampus = Connection::prepare($sql);
             $hasCampus->bindParam(1, $id);
@@ -38,8 +38,8 @@
     }
     // insere um campus no banco
     public function insertCampus() {
-        $sql = 'INSERT INTO Campus (txNome) ';
-        $sql.= 'VALUES (:txNome)';
+        $sql = 'INSERT INTO campus (tx_nome)';
+        $sql.= 'VALUES (:tx_nome)';
         try {
             if ($this->hasCampus($this->getTxNome())) {
                 
@@ -51,9 +51,9 @@
                 return $data;
             } else {                
                 
-                $insert_Campus = Connection::prepare($sql);
-                $insert_Campus->bindValue(':txNome', $this->getTxNome(), PDO::PARAM_STR);
-                $insert_Campus->execute();
+                $insert_campus = Connection::prepare($sql);
+                $insert_campus->bindValue(':tx_nome', $this->getTxNome(), PDO::PARAM_STR);
+                $insert_campus->execute();
                 
                 $data = array(
                     'msg' => 'Campus inserido com sucesso',
@@ -71,12 +71,12 @@
     }
     // retorna um objeto campus
     public function loadCampus($id) {
-        $sql = 'SELECT * FROM Campus WHERE id = ?';
+        $sql = 'SELECT * FROM campus WHERE id = ?';
         try {
-            $load_Campus = Connection::prepare($sql);
-            $load_Campus->bindParam(1, $id);
-            $load_Campus->execute();
-            $result = $load_Campus->fetch(PDO::FETCH_OBJ);
+            $load_campus = Connection::prepare($sql);
+            $load_campus->bindParam(1, $id);
+            $load_campus->execute();
+            $result = $loadCampus->fetch(PDO::FETCH_OBJ);
             return $result;
             
         } catch (Exception $error_load) {
@@ -88,12 +88,12 @@
     }
     // atualiza um campus no banco
     public function updateCampus($id) {
-        $sql = 'UPDATE  Campus SET  txNome = :txNome WHERE  id = :id';
+        $sql = 'UPDATE campus SET tx_nome = :tx_nome WHERE id = :id';
         try {
-                $update_Campus = Connection::prepare($sql);
-                $update_Campus->bindValue(':user', $this->getCampus(), PDO::PARAM_STR);
-                $update_Campus->bindParam(':id', $id);
-                $update_Campus->execute();
+                $update_campus = Connection::prepare($sql);
+                $update_campus->bindValue(':tx_nome', $this->getTxNome(), PDO::PARAM_STR);
+                $update_campus->bindParam(':id', $id);
+                $update_campus->execute();
                 $data = array(
                     'msg' => 'Campus atualizado com sucesso',
                     'route' => 'user_edit.php?id=',
@@ -109,12 +109,12 @@
         }
     }
     // deleta um usuário do banco
-    public function deleteUser($id) {
-        $sql = 'DELETE FROM CampusCampus id = :id';
+    public function deleteCampus($id) {
+        $sql = 'DELETE FROM campus id = :id';
         try {
-            $delete_Campus = Connection::prepare($sql);
-            $delete_Campus->bindValue(":id", $id);
-            $delete_Campus->execute();
+            $delete_campus = Connection::prepare($sql);
+            $delete_campus->bindValue(":id", $id);
+            $delete_campus->execute();
             $data = array(
                 'msg' => 'Campus deletado com sucesso',
                 'route' => 'login.php',
@@ -129,5 +129,5 @@
             return $data;
         }
     }
-    
+
 }
