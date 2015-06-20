@@ -35,7 +35,7 @@
 
 	// verifica se o Disciplina já existe
     public function hasDisciplina($txNome) {
-        $sql = 'SELECT * FROM Disciplina WHERE txNome = ?';
+        $sql = 'SELECT * FROM disciplina WHERE tx_nome = ?';
         try {
             $hasDisciplina = Connection::prepare($sql);
             $hasDisciplina->bindParam(1, $txNome);
@@ -52,8 +52,8 @@
     }
     // insere um Disciplina no banco
     public function insertDisciplina() {
-        $sql = 'INSERT INTO Disciplina (txNome, nrCargaHoraria) ';
-        $sql.= 'VALUES (:txNome,:nrCargaHoraria)';
+        $sql = 'INSERT INTO disciplina (tx_nome, nr_carga_horaria) ';
+        $sql.= 'VALUES (:tx_nome,:nr_carga_horaria)';
         try {
             if ($this->hasDisciplina($this->getTxNome())) {
                 
@@ -66,8 +66,8 @@
             } else {                
                 
                 $insert_Disciplina = Connection::prepare($sql);
-                $insert_Disciplina->bindValue(':txNome', $this->getTxNome(), PDO::PARAM_STR);
-                $insert_Disciplina->bindValue(':nrCargaHoraria', $this->getNrCargaHoraria(), PDO::PARAM_STR);
+                $insert_Disciplina->bindValue(':tx_nome', $this->getTxNome(), PDO::PARAM_STR);
+                $insert_Disciplina->bindValue(':nr_carga_horaria', $this->getNrCargaHoraria(), PDO::PARAM_STR);
                 $insert_Disciplina->execute();
                 
                 $data = array(
@@ -86,7 +86,7 @@
     }
     // retorna um objeto Disciplina
     public function loadDisciplina($id) {
-        $sql = 'SELECT * FROM Disciplina WHERE id = ?';
+        $sql = 'SELECT * FROM disciplina WHERE id = ?';
         try {
             $load_Disciplina = Connection::prepare($sql);
             $load_Disciplina->bindParam(1, $id);
@@ -103,13 +103,13 @@
     }
     // atualiza um Disciplina no banco
     public function updateDisciplina($id) {
-        $sql = 'UPDATE  Disciplina SET  txNome = :txNome, nrCargaHoraria = :nrCargaHoraria WHERE  id = :id';
+        $sql = 'UPDATE  disciplina SET  tx_nome = :tx_nome, nr_carga_horaria = :nr_carga_horaria WHERE  id = :id';
         try {
-                $update_Curso = Connection::prepare($sql);
-                $update_Curso->bindValue(':txNome', $this->getTxNome(), PDO::PARAM_STR);
-                $update_Curso->bindValue(':nrCargaHoraria', $this->getNrCargaHoraria(), PDO::PARAM_STR);
-                $update_Curso->bindParam(':id', $id);
-                $update_Curso->execute();
+                $update_Disciplina = Connection::prepare($sql);
+                $update_Disciplina->bindValue(':tx_nome', $this->getTxNome(), PDO::PARAM_STR);
+                $update_Disciplina->bindValue(':nr_carga_horaria', $this->getNrCargaHoraria(), PDO::PARAM_STR);
+                $update_Disciplina->bindParam(':id', $id);
+                $update_Disciplina->execute();
                 $data = array(
                     'msg' => 'Disciplina atualizado com sucesso',
                     'route' => 'user_edit.php?id=',
@@ -126,7 +126,7 @@
     }
     // deleta um Disciplina do banco
     public function deleteDisciplina($id) {
-        $sql = 'DELETE FROM Disciplina WHERE id = :id';
+        $sql = 'DELETE FROM disciplina WHERE id = :id';
         try {
             $delete_Disciplina = Connection::prepare($sql);
             $delete_Disciplina->bindValue(":id", $id);

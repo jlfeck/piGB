@@ -35,7 +35,7 @@
 		}
     // verifica se o Curso já existe
     public function hasCurso($txDescricao) {
-        $sql = 'SELECT * FROM Curso WHERE txDescricao = ?';
+        $sql = 'SELECT * FROM curso WHERE tx_descricao = ?';
         try {
             $hasCurso = Connection::prepare($sql);
             $hasCurso->bindParam(1, $txDescricao);
@@ -52,8 +52,8 @@
     }
     // insere um curso no banco
     public function insertCurso() {
-        $sql = 'INSERT INTO Curso (txDescricao, campusId) ';
-        $sql.= 'VALUES (:txDescricao,:campusId)';
+        $sql = 'INSERT INTO curso (tx_descricao, campus_id) ';
+        $sql.= 'VALUES (:tx_descricao,:campus_id)';
         try {
             if ($this->hasCurso($this->getTxDescricao())) {
                 
@@ -66,8 +66,8 @@
             } else {                
                 
                 $insert_Curso = Connection::prepare($sql);
-                $insert_Curso->bindValue(':txDescricao', $this->getTxDescricao(), PDO::PARAM_STR);
-                $insert_Curso->bindValue(':campusId', $this->getCampusId(), PDO::PARAM_STR);
+                $insert_Curso->bindValue(':tx_descricao', $this->getTxDescricao(), PDO::PARAM_STR);
+                $insert_Curso->bindValue(':campus_id', $this->getCampusId(), PDO::PARAM_STR);
                 $insert_Curso->execute();
                 
                 $data = array(
@@ -84,9 +84,9 @@
             return $data;
         }
     }
-    // retorna um objeto user
+    // retorna um objeto curso
     public function loadCurso($id) {
-        $sql = 'SELECT * FROM Curso WHERE id = ?';
+        $sql = 'SELECT * FROM curso WHERE id = ?';
         try {
             $load_Curso = Connection::prepare($sql);
             $load_Curso->bindParam(1, $id);
@@ -103,11 +103,11 @@
     }
     // atualiza um usuário no banco
     public function updateCurso($id) {
-        $sql = 'UPDATE  Curso SET  txDescricao = :txDescricao, campusId = :campusId WHERE  id = :id';
+        $sql = 'UPDATE  curso SET  tx_descricao = :tx_descricao, campus_id = :campus_id WHERE  id = :id';
         try {
                 $update_Curso = Connection::prepare($sql);
-                $update_Curso->bindValue(':txDescricao', $this->getTxDescricao(), PDO::PARAM_STR);
-                $update_Curso->bindValue(':campusId', $this->getCampusId(), PDO::PARAM_STR);
+                $update_Curso->bindValue(':tx_descricao', $this->getTxDescricao(), PDO::PARAM_STR);
+                $update_Curso->bindValue(':campus_id', $this->getCampusId(), PDO::PARAM_STR);
                 $update_Curso->bindParam(':id', $id);
                 $update_Curso->execute();
                 $data = array(
@@ -126,7 +126,7 @@
     }
     // deleta um usuário do banco
     public function deleteCurso($id) {
-        $sql = 'DELETE FROM Curso WHERE id = :id';
+        $sql = 'DELETE FROM curso WHERE id = :id';
         try {
             $delete_Curso = Connection::prepare($sql);
             $delete_Curso->bindValue(":id", $id);
