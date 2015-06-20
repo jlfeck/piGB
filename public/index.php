@@ -32,10 +32,19 @@ function url(){
 	);
 }
 
-$user = new User();
+$Campus = new Campus();
 
-var_dump($user->hasUser('admin'));
+// var_dump($Campus->updateCampus(2));
 
+// $nome = "UFRGS";
+
+// $Campus->setTxNome($nome);
+
+// $return = $Campus->updateCampus(2);
+
+$return = $Campus->deleteCampus(2);
+
+var_dump($return);
 
 $arrayName = array('baseUrl' => url(),
 					'name' => 'joao', 

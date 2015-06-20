@@ -76,10 +76,10 @@ class Campus extends Connection
             $load_campus = Connection::prepare($sql);
             $load_campus->bindParam(1, $id);
             $load_campus->execute();
-            $result = $loadCampus->fetch(PDO::FETCH_OBJ);
+            $result = $load_campus->fetch(PDO::FETCH_OBJ);
             return $result;
             
-        } catch (Exception $error_load) {
+        } catch (PDOException $error_load) {
             $data = array(
                 'msg' => 'Erro ao selecionar dados '.$error_load->getMessage()
             );
@@ -110,7 +110,7 @@ class Campus extends Connection
     }
     // deleta um usuário do banco
     public function deleteCampus($id) {
-        $sql = 'DELETE FROM campus id = :id';
+        $sql = 'DELETE FROM campus WHERE id = :id';
         try {
             $delete_campus = Connection::prepare($sql);
             $delete_campus->bindValue(":id", $id);
