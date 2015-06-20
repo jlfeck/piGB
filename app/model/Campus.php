@@ -129,5 +129,4 @@ class Campus extends Connection
             return $data;
         }
     }
-
 }

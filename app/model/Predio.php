@@ -1,33 +1,33 @@
 <?php
 
-	class Predio extends Connection{
-		private $id = 0;
-		private $txIdentificacao = "";
-		private $campusId = 0;
+class Predio extends Connection
+{
+	private $id = 0;
+	private $txIdentificacao = "";
+	private $campusId = 0;
 
-		//SETS
-		public function setId($id){
-			$this->id = $id;
-		}
-		public function setTxIdentificacao($txIdentificacao){
-			$this->txIdentificacao = $txIdentificacao;
-		}
-		public function setCampusId($campusId){
-			$this->campusId = $campusId;
-		}
 
-		//GETS
-		public function getId(){
-			return $this->id;
-		}
-		public function getTxIdentificacao(){
-			return $this->txIdentificacao;
-		}
-		public function getCampusId(){
-			return $this->campusId;
-		}
-	
-	// verifica se o Predio já existe
+	public function setId($id){
+		$this->id = $id;
+	}
+	public function getId(){
+		return $this->id;
+	}
+
+    public function setTxIdentificacao($txIdentificacao){
+        $this->txIdentificacao = $txIdentificacao;
+    }
+	public function getTxIdentificacao(){
+		return $this->txIdentificacao;
+	}
+
+    public function setCampusId($campusId){
+        $this->campusId = $campusId;
+	public function getCampusId(){
+		return $this->campusId;
+	}
+
+    // verifica se o Predio já existe
     public function hasPredio($txIdentificacao) {
         $sql = 'SELECT * FROM Predio WHERE txIdentificacao = ?';
         try {
@@ -139,5 +139,4 @@
             return $data;
         }
     }
-    
 }
