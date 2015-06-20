@@ -1,0 +1,17 @@
+	<form method="POST" action="{{ baseUrl() }}/curso/edit/{{ curso.id }}" class="form-horizontal" role="form">
+	  <input type="hidden" name="_METHOD" value="PUT"/>
+	  <input type="hidden" name="id" value="{{ curso.id }}" />
+	  <div class="form-group">
+	    <label for="" class="col-sm-2 control-label">Descrição</label>
+	    <div class="col-sm-4">
+	      <input type="text" class="form-control" name="txDescrição" placeholder="Descrição" value="{{ curso.txDescrição }}">
+	    </div>
+	  </div>
+	  
+	  <div class="form-group">
+	    <div class="col-sm-offset-2 col-sm-5">
+	      <button type="submit" class="btn btn-default">Salvar</button>
+	    </div>
+	  </div>
+
+	</form>

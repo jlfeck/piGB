@@ -1,0 +1,32 @@
+ <div class="panel panel-default">
+    <div class="panel-heading">
+      <a class="btn btn-success" href="{{ baseUrl() }}/curso/new"><span class="glyphicon glyphicon-plus"></span></a>
+    </div>
+
+    <div class="panel-body">
+      <div class="row header-table">
+        <div class="col-xs-2 col-md-1">ID</div>
+        <div class="col-xs-4 col-md-6">Descrição</div>
+                <div class="col-xs-4 col-md-3">Ações</div>
+      </div>
+      <div class="row content-table">
+        {% if services is not empty %}
+          {% for service in services %}
+            <div class="line-table">
+              <div class="col-xs-2 col-md-1">{{ curso.id }}</div>
+              <div class="col-xs-4 col-md-6">{{ curso.txDescricao }}</div>
+              <div class="col-xs-4 col-md-3">
+                <a href="{{ baseUrl() }}/curso/edit/{{ curso.id }}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
+                <button data-url="{{ baseUrl() }}/curso/delete/{{ curso.id }}" onclick="confirmDelete(this)" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+            <div class="line-table text-center">
+              <div class="col-xs-12 col-md-12">Não foram encontrados registros</div>
+            </div>
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
