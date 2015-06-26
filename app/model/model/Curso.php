@@ -36,7 +36,7 @@ class Curso extends Connection
     // verifica se o Curso já existe
     public function hasCurso($txDescricao)
     {
-        $sql = 'SELECT * FROM Curso WHERE txDescricao = ?';
+        $sql = 'SELECT * FROM curso WHERE tx_descricao = ?';
         try {
             $hasCurso = Connection::prepare($sql);
             $hasCurso->bindParam(1, $txDescricao);
@@ -54,7 +54,7 @@ class Curso extends Connection
     // insere um curso no banco
     public function insertCurso()
     {
-        $sql = 'INSERT INTO Curso (txDescricao, campusId) ';
+        $sql = 'INSERT INTO curso (tx_descricao, campus_id) ';
         $sql.= 'VALUES (:txDescricao,:campusId)';
         try {
             if ($this->hasCurso($this->getTxDescricao())) {
@@ -89,7 +89,7 @@ class Curso extends Connection
     // retorna um objeto user
     public function loadCurso($id)
     {
-        $sql = 'SELECT * FROM Curso WHERE id = ?';
+        $sql = 'SELECT * FROM curso WHERE id = ?';
         try {
             $load_Curso = Connection::prepare($sql);
             $load_Curso->bindParam(1, $id);
@@ -107,7 +107,7 @@ class Curso extends Connection
     // atualiza um usuário no banco
     public function updateCurso($id)
     {
-        $sql = 'UPDATE  Curso SET  txDescricao = :txDescricao, campusId = :campusId WHERE  id = :id';
+        $sql = 'UPDATE  curso SET  txDescricao = :tx_descricao, campus_id = :campusId WHERE  id = :id';
         try {
                 $update_Curso = Connection::prepare($sql);
                 $update_Curso->bindValue(':txDescricao', $this->getTxDescricao(), PDO::PARAM_STR);
@@ -131,7 +131,7 @@ class Curso extends Connection
     // deleta um usuário do banco
     public function deleteCurso($id)
     {
-        $sql = 'DELETE FROM Curso WHERE id = :id';
+        $sql = 'DELETE FROM curso WHERE id = :id';
         try {
             $delete_Curso = Connection::prepare($sql);
             $delete_Curso->bindValue(":id", $id);
@@ -152,3 +152,5 @@ class Curso extends Connection
     }
     
 }
+
+////GUILHERME O. FLORES////

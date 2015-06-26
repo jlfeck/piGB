@@ -36,7 +36,7 @@ class Predio extends Connection
     // verifica se o Predio já existe
     public function hasPredio($txIdentificacao)
     {
-        $sql = 'SELECT * FROM Predio WHERE txIdentificacao = ?';
+        $sql = 'SELECT * FROM predio WHERE tx_identificacao = ?';
         try {
             $hasPredio = Connection::prepare($sql);
             $hasPredio->bindParam(1, $txIdentificacao);
@@ -54,7 +54,7 @@ class Predio extends Connection
     // insere um Predio no banco
     public function insertPredio()
     {
-        $sql = 'INSERT INTO Predio (txIdentificacao, campusId) ';
+        $sql = 'INSERT INTO predio (tx_identificacao, campus_id) ';
         $sql.= 'VALUES (:txIdentificacao,:campusId)';
         try {
             if ($this->hasPredio($this->getTxIdentificacao())) {
@@ -67,13 +67,13 @@ class Predio extends Connection
                 return $data;
             } else {                
                 
-                $insert_Disciplina = Connection::prepare($sql);
-                $insert_Disciplina->bindValue(':txIdentificacao', $this->getTxIdentificacao(), PDO::PARAM_STR);
-                $insert_Disciplina->bindValue(':campusId', $this->getCampusId(), PDO::PARAM_STR);
-                $insert_Disciplina->execute();
+                $insert_Predio = Connection::prepare($sql);
+                $insert_Predio->bindValue(':txIdentificacao', $this->getTxIdentificacao(), PDO::PARAM_STR);
+                $insert_Predio->bindValue(':campusId', $this->getCampusId(), PDO::PARAM_STR);
+                $insert_Predio->execute();
                 
                 $data = array(
-                    'msg' => 'Predio inserido com sucesso',
+                    'msg' => 'Predio cadastrado com sucesso',
                     'route' => 'login.php'
                 );
                 
@@ -89,7 +89,7 @@ class Predio extends Connection
     // retorna um objeto Predio
     public function loadPredio($id)
     {
-        $sql = 'SELECT * FROM Predio WHERE id = ?';
+        $sql = 'SELECT * FROM predio WHERE id = ?';
         try {
             $load_Predio = Connection::prepare($sql);
             $load_Predio->bindParam(1, $id);
@@ -107,7 +107,7 @@ class Predio extends Connection
     // atualiza um Predio no banco
     public function updatePredio($id)
     {
-        $sql = 'UPDATE  Predio SET  txNome = :txNome, nrCargaHoraria = :nrCargaHoraria WHERE  id = :id';
+        $sql = 'UPDATE  predio SET  tx_identificacao = :txIdentificacao, campus_id = :campusId WHERE  id = :id';
         try {
                 $update_Predio = Connection::prepare($sql);
                 $update_Predio->bindValue(':txIdentificacao', $this->getTxIdentificacao(), PDO::PARAM_STR);
@@ -122,7 +122,7 @@ class Predio extends Connection
                 return $data;
         } catch (Exception $error_update) {
             $data = array(
-                'msg' => 'Erro ao atualizar disciplina '.$error_update->getMessage(),
+                'msg' => 'Erro ao atualizar prédio '.$error_update->getMessage(),
                 'error' => true
             );
             return $data;
@@ -131,7 +131,7 @@ class Predio extends Connection
     // deleta um Predio do banco
     public function deletePredio($id)
     {
-        $sql = 'DELETE FROM Predio WHERE id = :id';
+        $sql = 'DELETE FROM predio WHERE id = :id';
         try {
             $delete_Predio = Connection::prepare($sql);
             $delete_Predio->bindValue(":id", $id);
@@ -151,3 +151,5 @@ class Predio extends Connection
         }
     }
 }
+
+////GUILHERME O. FLORES////

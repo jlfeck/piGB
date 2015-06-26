@@ -36,7 +36,7 @@ class Disciplina extends Connection
     // verifica se o Disciplina já existe
     public function hasDisciplina($txNome)
     {
-        $sql = 'SELECT * FROM Disciplina WHERE txNome = ?';
+        $sql = 'SELECT * FROM disciplina WHERE tx_nome = ?';
         try {
             $hasDisciplina = Connection::prepare($sql);
             $hasDisciplina->bindParam(1, $txNome);
@@ -54,7 +54,7 @@ class Disciplina extends Connection
     // insere um Disciplina no banco
     public function insertDisciplina()
     {
-        $sql = 'INSERT INTO Disciplina (txNome, nrCargaHoraria) ';
+        $sql = 'INSERT INTO disciplina (tx_nome, nr_carga_horaria) ';
         $sql.= 'VALUES (:txNome,:nrCargaHoraria)';
         try {
             if ($this->hasDisciplina($this->getTxNome())) {
@@ -89,7 +89,7 @@ class Disciplina extends Connection
     // retorna um objeto Disciplina
     public function loadDisciplina($id)
     {
-        $sql = 'SELECT * FROM Disciplina WHERE id = ?';
+        $sql = 'SELECT * FROM disciplina WHERE id = ?';
         try {
             $load_Disciplina = Connection::prepare($sql);
             $load_Disciplina->bindParam(1, $id);
@@ -97,7 +97,7 @@ class Disciplina extends Connection
             $result = $load_Disciplina->fetch(PDO::FETCH_OBJ);
             return $result;
             
-        } catch (Exception $error_load) {
+        } catch (Exception $error_load){
             $data = array(
                 'msg' => 'Erro ao selecionar dados '.$error_load->getMessage()
             );
@@ -107,13 +107,13 @@ class Disciplina extends Connection
     // atualiza um Disciplina no banco
     public function updateDisciplina($id)
     {
-        $sql = 'UPDATE  Disciplina SET  txNome = :txNome, nrCargaHoraria = :nrCargaHoraria WHERE  id = :id';
+        $sql = 'UPDATE  disciplina SET  tx_nome = :tx_nome, nr_carga_horaria = :nrCargaHoraria WHERE  id = :id';
         try {
-                $update_Curso = Connection::prepare($sql);
-                $update_Curso->bindValue(':txNome', $this->getTxNome(), PDO::PARAM_STR);
-                $update_Curso->bindValue(':nrCargaHoraria', $this->getNrCargaHoraria(), PDO::PARAM_STR);
-                $update_Curso->bindParam(':id', $id);
-                $update_Curso->execute();
+                $update_Disciplina = Connection::prepare($sql);
+                $update_Disciplina->bindValue(':txNome', $this->getTxNome(), PDO::PARAM_STR);
+                $update_Disciplina->bindValue(':nrCargaHoraria', $this->getNrCargaHoraria(), PDO::PARAM_STR);
+                $update_Disciplina->bindParam(':id', $id);
+                $update_Disciplina->execute();
                 $data = array(
                     'msg' => 'Disciplina atualizado com sucesso',
                     'route' => 'user_edit.php?id=',
@@ -131,7 +131,7 @@ class Disciplina extends Connection
     // deleta um Disciplina do banco
     public function deleteDisciplina($id)
     {
-        $sql = 'DELETE FROM Disciplina WHERE id = :id';
+        $sql = 'DELETE FROM disciplina WHERE id = :id';
         try {
             $delete_Disciplina = Connection::prepare($sql);
             $delete_Disciplina->bindValue(":id", $id);
@@ -151,3 +151,5 @@ class Disciplina extends Connection
         }
     }
 }
+
+////GUILHERME O. FLORES////
