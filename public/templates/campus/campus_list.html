@@ -1,6 +1,6 @@
  <div class="panel panel-default">
     <div class="panel-heading">
-      <a class="btn btn-success" href="{{ baseUrl() }}/service/new"><span class="glyphicon glyphicon-plus"></span></a>
+      <a class="btn btn-success" href="{{ baseUrl() }}/campus/new"><span class="glyphicon glyphicon-plus"></span></a>
     </div>
 
     <div class="panel-body">
@@ -10,13 +10,13 @@
        
       </div>
       <div class="row content-table">
-        {% if services is not empty %}
-          {% for service in services %}
+        {% if campus is not empty %}
+          {% for campus in campus %}
             <div class="line-table">
               <div class="col-xs-2 col-md-1">{{ campus.id }}</div>
               <div class="col-xs-4 col-md-6">{{ campus.txNome }}</div>
-                <a href="{{ baseUrl() }}/service/edit/{{ service.id }}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
-                <button data-url="{{ baseUrl() }}/service/delete/{{ service.id }}" onclick="confirmDelete(this)" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>
+                <a href="{{ baseUrl() }}/campus/edit/{{ campus.id }}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
+                <button data-url="{{ baseUrl() }}/campus/delete/{{ campus.id }}" onclick="confirmDelete(this)" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>
               </div>
             </div>
           {% endfor %}

@@ -1,6 +1,6 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-      <a class="btn btn-success" href="{{ baseUrl() }}/service/new"><span class="glyphicon glyphicon-plus"></span></a>
+      <a class="btn btn-success" href="{{ baseUrl() }}/sala/new"><span class="glyphicon glyphicon-plus"></span></a>
     </div>
 
     <div class="panel-body">
@@ -11,17 +11,17 @@
         <div class="col-xs-4 col-md-6">Computadores</div>
       </div>
       <div class="row content-table">
-        {% if services is not empty %}
-          {% for service in services %}
+        {% if salas is not empty %}
+          {% for sala in salas %}
             <div class="line-table">
               <div class="col-xs-2 col-md-1">{{ sala.id }}</div>
               <div class="col-xs-2 col-md-1">{{ sala.txIdetificacao }}</div>
               <div class="col-xs-2 col-md-1">{{ sala.nrComputadores }}</div>
               <div class="col-xs-2 col-md-1">{{ sala.nrCapacidade }}</div>
               <div class="col-xs-4 col-md-6">{{ predio.txIdentificacao }}</div>
-              <div class="col-xs-2 col-md-2">{{ service.percent }}</div>
-                <a href="{{ baseUrl() }}/service/edit/{{ service.id }}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
-                <button data-url="{{ baseUrl() }}/service/delete/{{ service.id }}" onclick="confirmDelete(this)" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>
+              <div class="col-xs-2 col-md-2">{{ sala.percent }}</div>
+                <a href="{{ baseUrl() }}/sala/edit/{{ sala.id }}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
+                <button data-url="{{ baseUrl() }}/sala/delete/{{ sala.id }}" onclick="confirmDelete(this)" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>
               </div>
             </div>
           {% endfor %}
