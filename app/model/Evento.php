@@ -18,123 +18,153 @@ class Evento extends Connection
 	private $flSabado = ""; 
 	private $flDomingo = "";
 
-	public function getId(){
+	public function getId()
+	{
 		return $this->id;
 	}
 
-	public function setId($id){
+	public function setId($id)
+	{
 		$this->id = $id;
 	}
 
-	public function getTxDescricao(){
+	public function getTxDescricao()
+	{
 		return $this->txDescricao;
 	}
 
-	public function setTxDescricao($txDescricao){
+	public function setTxDescricao($txDescricao)
+	{
 		$this->txDescricao = $txDescricao;
 	}
 
-	public function getDtInicio(){
+	public function getDtInicio()
+	{
 		return $this->dtInicio;
 	}
 
-	public function setDtInicio($dtInicio){
+	public function setDtInicio($dtInicio)
+	{
 		$this->dtInicio = $dtInicio;
 	}
 
-	public function getDtFim(){
+	public function getDtFim()
+	{
 		return $this->dtFim;
 	}
 
-	public function setDtFim($dtFim){
+	public function setDtFim($dtFim)
+	{
 		$this->dtFim = $dtFim;
 	}
 
-	public function getHrInicio(){
+	public function getHrInicio()
+	{
 		return $this->hrInicio;
 	}
 
-	public function setHrInicio($hrInicio){
+	public function setHrInicio($hrInicio)
+	{
 		$this->hrInicio = $hrInicio;
 	}
 
-	public function getHrFim(){
+	public function getHrFim()
+	{
 		return $this->hrFim;
 	}
 
-	public function setHrFim($hrFim){
+	public function setHrFim($hrFim)
+	{
 		$this->hrFim = $hrFim;
 	}
 
-	public function getStAtivo(){
+	public function getStAtivo()
+	{
 		return $this->stAtivo;
 	}
 
-	public function setStAtivo($stAtivo){
+	public function setStAtivo($stAtivo)
+	{
 		$this->stAtivo = $stAtivo;
 	}
 
-	public function getSalasId(){
+	public function getSalasId()
+	{
 		return $this->salasId;
 	}
 
-	public function setSalasId($salasId){
+	public function setSalasId($salasId)
+	{
 		$this->salasId = $salasId;
 	}
 
-	public function getFlSegunda(){
+	public function getFlSegunda()
+	{
 		return $this->flSegunda;
 	}
 
-	public function setFlSegunda($flSegunda){
+	public function setFlSegunda($flSegunda)
+	{
 		$this->flSegunda = $flSegunda;
 	}
 
-	public function getFlTerca(){
+	public function getFlTerca()
+	{
 		return $this->flTerca;
 	}
 
-	public function setFlTerca($flTerca){
+	public function setFlTerca($flTerca)
+	{
 		$this->flTerca = $flTerca;
 	}
 
-	public function getFlQuarta(){
+	public function getFlQuarta()
+	{
 		return $this->flQuarta;
 	}
 
-	public function setFlQuarta($flQuarta){
+	public function setFlQuarta($flQuarta)
+	{
 		$this->flQuarta = $flQuarta;
 	}
 
-	public function getFlQuinta(){
+	public function getFlQuinta()
+	{
 		return $this->flQuinta;
 	}
 
-	public function setFlQuinta($flQuinta){
+	public function setFlQuinta($flQuinta)
+	{
 		$this->flQuinta = $flQuinta;
 	}
 
-	public function getFlSexta(){
+	public function getFlSexta()
+	{
 		return $this->flSexta;
 	}
 
-	public function setFlSexta($flSexta){
+	public function setFlSexta($flSexta)
+	{
 		$this->flSexta = $flSexta;
 	}
 
-	public function getFlSabado(){
+	public function getFlSabado()
+	{
 		return $this->flSabado;
 	}
 
-	public function setFlSabado($flSabado){
+	public function setFlSabado($flSabado)
+	{
 		$this->flSabado = $flSabado;
 	}
 
-	public function getFlDomingo(){
+	public function getFlDomingo()
+	{
 		return $this->flDomingo;
 	}
 
-	public function setFlDomingo($flDomingo){
+	public function setFlDomingo($flDomingo)
+	{
 		$this->flDomingo = $flDomingo;
 	}
 	

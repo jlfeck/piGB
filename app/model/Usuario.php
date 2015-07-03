@@ -7,31 +7,43 @@ class Usuario extends Connection
 	private $txNome = ""; 
 	private $md5Password = "";
 
-	public function setId ($id)
+	public function setId($id)
 	{
 		$this->id = $id;
 	}
-	public function getId ()
+	public function getId()
 	{
 		return $this->id;
 	}
 
-	public function getTxLogin ()
+    public function setTxLogin($txLogin)
+    {
+        $this->txLogin = $txLogin;
+    }
+	public function getTxLogin()
 	{
 		return $this->txLogin;	
 	}
 
-	public function getTxNome ()
+    public function setTxNome($txNome)
+    {
+        $this->txNome = $txNome;
+    }
+	public function getTxNome()
 	{
 		return $this->txNome;			
 	}
 
-	public function getMd5Password ()
+    public function setMd5Password($md5Password)
+    {
+        $this->md5Password = $md5Password;
+    }
+	public function getMd5Password()
 	{
 		return $this->md5Password;			
 	}
 	
-	// verifica se o Usuario já existe
+	// verifica se o Usuario jÃ¡ existe
     public function hasUsuario($txLogin)
     {
         $sql = 'SELECT * FROM usuario WHERE tx_login = ?';
@@ -58,7 +70,7 @@ class Usuario extends Connection
             if ($this->hasUsuario($this->getTxLogin())) {
                 
                 $data = array(
-                    'msg' => 'Usuario já cadastrado',
+                    'msg' => 'Usuario jÃ¡ cadastrado',
                     'route' => 'user_new.php'
                 );
                 
@@ -68,7 +80,7 @@ class Usuario extends Connection
                 $insert_Usuario = Connection::prepare($sql);
                 $insert_Usuario->bindValue(':txLogin', $this->getTxLogin(), PDO::PARAM_STR);
 				$insert_Usuario->bindValue(':txNome', $this->getTxNome(), PDO::PARAM_STR);
-				$insert_Usuario->bindValue(':md5Password', $this->getMd5Password(), PDO::PARAM_STR);
+				$insert_Usuario->bindValue(':md5Password', md5($this->getMd5Password()), PDO::PARAM_STR);
                 $insert_Usuario->execute();
                 
                 $data = array(
@@ -104,14 +116,14 @@ class Usuario extends Connection
         }
     }
     // atualiza um Usuario no banco
-    public function updateTurma($id)
+    public function updateUsuario($id)
     {
         $sql = 'UPDATE  usuario SET  tx_login = :txLogin, tx_nome = :txNome, md5_password = :md5Password WHERE  id = :id';
         try {
                 $update_Usuario = Connection::prepare($sql);
                 $update_Usuario->bindValue(':txLogin', $this->getTxLogin(), PDO::PARAM_STR);
 				$update_Usuario->bindValue(':txNome', $this->getTxNome(), PDO::PARAM_STR);
-				$update_Usuario->bindValue(':md5Password', $this->getMd5Password(), PDO::PARAM_STR);
+				$update_Usuario->bindValue(':md5Password', md5($this->getMd5Password()), PDO::PARAM_STR);
                 $update_Usuario->bindParam(':id', $id);
                 $update_Usuario->execute();
                 $data = array(

@@ -1,7 +1,5 @@
 <?php
 
-// include '../config/config.php';
-
 /**
  * Define some constants
  */
@@ -20,34 +18,65 @@ if (file_exists(VENDORDIR . "autoload.php")) {
     die("<pre>Execute '/c/xampp/php/php composer.phar install' na raiz do projeto</pre>");
 }
 
-$loader = new Twig_Loader_Filesystem(TEMPLATEDIR);
-$twig = new Twig_Environment($loader);
+(new Twig_Loader_Filesystem(TEMPLATEDIR));
+// $twig = new Twig_Environment($loader);
 
-function url(){
-	return sprintf(
-	"%s://%s%s",
-	isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http',
-			$_SERVER['SERVER_NAME'],
-			$_SERVER['REQUEST_URI']
-	);
+// (new Campus())->hasUsuario(1);
+
+// $Usuario = new Usuario();
+
+// var_dump($Usuario->hasUsuario('joao_feck'));
+
+// var_dump($Usuario->updateCampus(2));
+
+// $login = "guilherme_flores";
+// $nome = "Guilherme Oliveira Flores";
+// $pass = "54321$$";
+
+// $Usuario->setTxLogin($login);
+// $Usuario->setTxNome($nome);
+// $Usuario->setMd5Password($pass);
+
+foreach (glob(ROOT . 'app' . DS . 'view' . DS . '*.php') as $filename) {
+    require_once $filename;
 }
 
-// (new Campus())->hasCampus(1);
 
-// var_dump(Campus::hasCampus(1));
+$parameters = explode('/', $_GET['op']);
 
-// var_dump($Campus->updateCampus(2));
+echo "<pre>";
+var_dump($parameters);
+echo "</pre>";
 
-// $nome = "UFRGS";
+if (sizeof($parameters) > 4) {
+	echo "maior que 4";
+} else {
 
-// $Campus->setTxNome($nome);
+	$url = Util::isEmpty($parameters['0']) . "/" . Util::isEmpty($parameters['1']) . "/" . Util::isEmpty($parameters['2']) . "/";
+	$id = Util::isEmpty($parameters['3']);
 
-// $return = $Campus->updateCampus(2);
+	var_dump($url);
 
-// $return = $Campus->deleteCampus(2);
+	switch ($url) {
+		case "admin/usuario/novo/": insertUsuario(); break;
+		case "admin/usuario/editar/": updateUsuario($id); break;
+		case "admin/usuario/excluir/": deteleUsuario($id); break;
+		
+		// case "admin/campus/novo/": insertCampus(); break;
+		// case "admin/campus/editar/": updateCampus($id); break;
+		// case "admin/campus/excluir/": deteleCampus($id); break;
 
-$arrayName = array('baseUrl' => url(),
-					'name' => 'joao', 
-					'idade' => '24');
+		default: echo "URL não encontrada"; break;
+	}
+}
 
-echo $twig->render('panel.html', $arrayName);
+
+// $return = $Usuario->updateCampus(2);
+
+// $return = $Usuario->deleteCampus(2);
+
+echo $twig->render('login.html', array('baseUrl' => Util::baseUrl()));
+
+
+
+
