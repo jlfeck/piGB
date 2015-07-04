@@ -15,8 +15,8 @@
           {% for disciplina in disciplinas %}
             <div class="line-table">
               <div class="col-xs-2 col-md-1">{{ disciplina.id }}</div>
-              <div class="col-xs-4 col-md-6">{{ disciplina.txNome }}</div>
-              <div class="col-xs-2 col-md-2">{{ disciplina.nrCargaHoraria }}</div>
+              <div class="col-xs-4 col-md-6">{{ disciplina.tx_nome }}</div>
+              <div class="col-xs-2 col-md-2">{{ disciplina.nr_carga_horaria }}</div>
               <div class="col-xs-4 col-md-3">
                 <a href="{{ baseUrl() }}/disciplina/edit/{{ disciplina.id }}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
                 <button data-url="{{ baseUrl() }}/disciplina/delete/{{ disciplina.id }}" onclick="confirmDelete(this)" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>

@@ -14,7 +14,7 @@
           {% for curso in cursos %}
             <div class="line-table">
               <div class="col-xs-2 col-md-1">{{ curso.id }}</div>
-              <div class="col-xs-4 col-md-6">{{ curso.txDescricao }}</div>
+              <div class="col-xs-4 col-md-6">{{ curso.tx_descricao }}</div>
               <div class="col-xs-4 col-md-3">
                 <a href="{{ baseUrl() }}/curso/edit/{{ curso.id }}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
                 <button data-url="{{ baseUrl() }}/curso/delete/{{ curso.id }}" onclick="confirmDelete(this)" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>

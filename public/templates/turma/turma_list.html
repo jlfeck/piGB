@@ -15,8 +15,8 @@
           {% for turma in turmas %}
             <div class="line-table">
               <div class="col-xs-2 col-md-1">{{ turma.id }}</div>
-              <div class="col-xs-4 col-md-6">{{ turma.txDescricao }}</div>
-              <div class="col-xs-2 col-md-2">{{ turma.txSemestre }}</div>
+              <div class="col-xs-4 col-md-6">{{ turma.tx_descricao }}</div>
+              <div class="col-xs-2 col-md-2">{{ turma.tx_semestre }}</div>
               <div class="col-xs-4 col-md-3">
                 <a href="{{ baseUrl() }}/turma/edit/{{ turma.id }}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
                 <button data-url="{{ baseUrl() }}/turma/delete/{{ turma.id }}" onclick="confirmDelete(this)" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>
