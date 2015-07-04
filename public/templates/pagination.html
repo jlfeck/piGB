@@ -1,0 +1,21 @@
+<ul class="pagination">
+  <li {{ page == 1 ? 'class="disabled"' : '' }}>
+    {% if page > 1 %}
+      <a href="{{ baseUrl() }}{{ route }}{{ page - 1 }}">&laquo;</a>
+    {% else %}
+      <span>&laquo;</span>
+    {% endif %}
+  </li>
+  {% for i in 1..pages %}
+    <li {{ page == i ? 'class="active"' : '' }}>
+      <a href="{{ baseUrl() }}{{ route }}{{ i }}">{{ i }}</a>
+    </li>
+  {% endfor %}
+  <li {{ page == pages ? 'class="disabled"' : '' }}>
+    {% if page < pages %}
+      <a href="{{ baseUrl() }}{{ route }}{{ page + 1 }}">&raquo;</a>
+    {% else %}
+      <span>&raquo;</span>
+    {% endif %}
+  </li>
+</ul>

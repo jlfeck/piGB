@@ -1,0 +1,9 @@
+<form method="POST" action="{{ baseUrl() }}/predio/edit/{{ service.id }}" class="form-horizontal" role="form">
+	  <input type="hidden" name="_METHOD" value="PUT"/>
+	  <input type="hidden" name="id" value="{{ predio.id }}" />
+	  <div class="form-group">
+	    <label for="" class="col-sm-2 control-label">Nome</label>
+	    <div class="col-sm-4">
+	      <input type="text" class="form-control" name="predio.txIndentificacao" placeholder="Nome" value="{{ predio.txIndetificacao }}">
+	    </div>
+	</form>

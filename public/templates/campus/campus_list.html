@@ -1,0 +1,57 @@
+{% extends "panel.html" %}
+
+{% block panel %}
+
+{% if error is not empty %}
+    <div class="alert alert-success alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+      </button>
+      {{ error }}
+    </div>
+{% endif %}
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <a class="btn btn-success" href="{{ baseUrl }}?op=admin/campus/novo/"><span class="glyphicon glyphicon-plus"></span></a>
+  </div>
+
+  <div class="panel-body">
+     
+    <div class="row content-table">
+          
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% if campuss is not empty %}
+              {% for campus in campuss %}
+              <tr>
+                <th scope="row">{{ campus.id }}</th>
+                <td>{{ campus.tx_nome }}</td>
+                <td>
+                  <a href="{{ baseUrl }}?op=admin/campus/editar/{{ campus.id }}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
+                  <button data-url="{{ baseUrl }}?op=admin/campus/excluir/{{ campus.id }}" onclick="confirmDelete(this)" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>
+                </td>
+              </tr>
+              {% endfor %}
+              {% else %}
+                  <tr>
+                    <td>Não foram encontrados registros</td>
+                  </tr>
+              {% endif %}
+            </tbody>
+          </table>
+
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

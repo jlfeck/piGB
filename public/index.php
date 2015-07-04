@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Define some constants
  */
@@ -18,12 +19,65 @@ if (file_exists(VENDORDIR . "autoload.php")) {
 }
 
 $loader = new Twig_Loader_Filesystem(TEMPLATEDIR);
-$twig = new Twig_Environment($loader, array(
-    'cache' => CACHETEMPLATEDIR,
-));
+$twig = new Twig_Environment($loader);
+
+// (new Campus())->hasUsuario(1);
+
+// $Usuario = new Usuario();
+
+// var_dump($Usuario->hasUsuario('joao_feck'));
+
+// var_dump($Usuario->updateCampus(2));
+
+// $login = "guilherme_flores";
+// $nome = "Guilherme Oliveira Flores";
+// $pass = "54321$$";
+
+// $Usuario->setTxLogin($login);
+// $Usuario->setTxNome($nome);
+// $Usuario->setMd5Password($pass);
+
+foreach (glob(ROOT . 'app' . DS . 'view' . DS . '*.php') as $filename) {
+    require_once $filename;
+}
 
 
-$arrayName = array('name' => 'joao', 
-					'idade' => '21');
+$parameters = explode('/', $_GET['op']);
 
-echo $twig->render('index.html', $arrayName);
+// echo "<pre>";
+// var_dump($parameters);
+// echo "</pre>";
+
+if (sizeof($parameters) > 4) {
+	echo "maior que 4";
+} else {
+
+	$url = Util::isEmpty($parameters['0']) . "/" . Util::isEmpty($parameters['1']) . "/" . Util::isEmpty($parameters['2']) . "/";
+	$id = Util::isEmpty($parameters['3']);
+
+	// var_dump($url);
+
+	switch ($url) {
+		case "admin/campus/lista/": getCampus($twig); break;
+		case "admin/campus/novo/": insertCampus($twig); break;
+		case "admin/campus/editar/": updateCampus($twig, $id); break;
+		case "admin/campus/excluir/": deteleCampus($twig, $id); break;
+		
+		// case "admin/campus/novo/": insertCampus(); break;
+		// case "admin/campus/editar/": updateCampus($id); break;
+		// case "admin/campus/excluir/": deteleCampus($id); break;
+
+		default: echo "URL não encontrada"; break;
+	}
+}
+
+
+// $return = $Usuario->updateCampus(2);
+
+// $return = $Usuario->deleteCampus(2);
+
+// echo $twig->render('login.html', array('baseUrl' => Util::baseUrl()));
+
+
+
+
