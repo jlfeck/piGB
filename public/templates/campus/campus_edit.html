@@ -1,10 +1,21 @@
-<form method="POST" action="{{ baseUrl() }}/campus/edit/{{ service.id }}" class="form-horizontal" role="form">
+{% extends "panel.html" %}
+
+{% block panel %}
+
+<form method="POST" action="{{ baseUrl }}?op=admin/campus/editar/{{ campus.id }}" class="form-horizontal" role="form">
 	<input type="hidden" name="_METHOD" value="PUT"/>
 	<input type="hidden" name="id" value="{{ campus.id }}" />
 	<div class="form-group">
 		<label for="" class="col-sm-2 control-label">Nome</label>
 		<div class="col-sm-4">
-		  <input type="text" class="form-control" name="txNome" placeholder="Nome" value="{{ txNome }}">
+		  <input type="text" class="form-control" name="tx_nome" placeholder="Nome" value="{{ campus.tx_nome }}">
 		</div>
 	</div>
+	<div class="form-group">
+	    <div class="col-sm-offset-2 col-sm-5">
+	      <button type="submit" class="btn btn-default">Salvar</button>
+	    </div>
+  	</div>
 </form>
+
+{% endblock %}

@@ -3,21 +3,8 @@
 use \Twig_Environment as Twig;
 use \Twig_Loader_Filesystem as TwigLoader;
 
-class Util extends Twig
+class Util
 {
-	public static $instance;
-
-	public function __construct() {
-        self::$instance = $this;
-    }
-
-    public static function getInstance() {
-        if (self::$instance === null) {
-            self::$instance = new self();
-        }
-        return self::$instance;
-    }
-
 	public static function baseUrl()
 	{
 		return sprintf(
@@ -44,8 +31,8 @@ class Util extends Twig
 	}
 
 	public static function isPost()
-	{
-
+	{ 
+		return ($_SERVER['REQUEST_METHOD'] == 'POST');
 	}
 
 }

@@ -138,6 +138,23 @@ class Campus extends Connection
             return $data;
         }
     }
+    // lista todos os campus
+    public function listAllCampus()
+    {
+        $sql = 'SELECT * FROM campus';
+        
+        try {
+            $list_campus = Connection::prepare($sql);
+            $list_campus->execute();
+            
+            $result = $list_campus->fetchAll(PDO::FETCH_OBJ);
+            
+            return $result;
+            
+        } catch (Exception $error_list) {
+            return array('msg' => 'Erro ao selecionar dados '.$error_list->getMessage());
+        }
+    }
 }
 
 ////GUILHERME O. FLORES////
